@@ -1,0 +1,22 @@
+{
+  "extends": "getty",
+  "rules": {
+    "generator-star-spacing": 0,
+    "import/no-extraneous-dependencies": [
+      2,
+      {
+        "devDependencies": true
+      }
+    ],
+    "prefer-arrow-callback":"off",
+    "newline-per-chained-call":"off",
+    "no-unused-expressions": 0,
+    "no-underscore-dangle": 0,
+    "func-names": 0,
+    "no-console": "off",
+    "no-param-reassign": "off",
+    "camelcase": "off",
+    "class-methods-use-this": "off",
+    "import/prefer-default-export": "off"
+  }
+}
