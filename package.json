@@ -19,6 +19,7 @@
   "author": "Getty.IO <dev@getty.io> - Marlon",
   "license": "ISC",
   "dependencies": {
+    "@tronprotocol/wallet-api": "^0.0.35",
     "axios": "^0.18.0",
     "bluebird": "^3.5.1",
     "body-parser": "^1.18.2",

@@ -10,7 +10,10 @@ router.post('/emit', celebrate(emit), ({ app, body }, res) => {
 
   API.emit(io, { ...body })
     .then(data => res.status(200).json(data))
-    .catch(error => res.status(500).json({ error }));
+    .catch(({ message }) => res.status(500).json({
+      error: { message, status: 500 },
+      body
+    }));
 });
 
 export default router;
