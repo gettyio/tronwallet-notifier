@@ -46,7 +46,6 @@ app.use((req, res) => {
   res.status(404).json(constants.NOT_FOUND_MESSAGE);
 });
 
-// logger.info(`${constants.SOCKET_STARTED} ${socketPort}`);
 io.sockets.on('connection', function () {
   logger.info('Handshake was done');
 });
