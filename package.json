@@ -34,7 +34,7 @@
     "socket.io": "^2.1.0",
     "socket.io-client": "^2.1.0",
     "stellar-sdk": "^0.8.0",
-    "supertest": "^3.0.0",
+    "supertest": "^3.1.0",
     "winston": "^3.0.0-rc5"
   },
   "devDependencies": {

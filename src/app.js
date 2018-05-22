@@ -15,6 +15,7 @@ import { syntaxHandler } from './config/utils';
 
 // Routes
 import notifier from './v1/notifier/service';
+import wallet from './v1/wallet/service';
 
 const app = express();
 const port = config.get('PORT');
@@ -31,6 +32,7 @@ app.use(morgan('dev', { stream: logger.stream }));
 
 // Routes Import
 app.use('/v1/notifier', notifier);
+app.use('/v1/wallet', wallet);
 
 // REST Schema Handler
 app.use(celebrate.errors());
@@ -44,9 +46,9 @@ app.use((req, res) => {
   res.status(404).json(constants.NOT_FOUND_MESSAGE);
 });
 
-server.listen(port, () => logger.info(`${constants.REST_STARTED} ${port}`));
-
 // logger.info(`${constants.SOCKET_STARTED} ${socketPort}`);
 io.sockets.on('connection', function () {
   logger.info('Handshake was done');
 });
+
+export default server.listen(port, () => logger.info(`${constants.REST_STARTED} ${port}`));
