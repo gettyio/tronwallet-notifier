@@ -1,0 +1,5 @@
+{
+  "PORT": "3030",
+  "SOCKET_PORT": "8080",
+  "DESERIALIZE_SCAN_URL": "https://api.tronscan.org/api/transaction?dry-run"
+}
