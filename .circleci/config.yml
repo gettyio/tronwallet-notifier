@@ -18,7 +18,6 @@ jobs:
           - v1-dependencies-
 
       - run: yarn install
-      - run: sudo npm install --global --unsafe-perm now
 
       - save_cache:
           paths:
@@ -42,6 +41,7 @@ jobs:
           - v1-dependencies-{{ checksum "package.json" }}
           - v1-dependencies-
 
+      - run: sudo npm install --global --unsafe-perm now
       - run: now -t ${NOW_TOKEN}
       - run: now -t ${NOW_TOKEN} alias ${DEV_ALIAS}
 
@@ -58,6 +58,7 @@ jobs:
           - v1-dependencies-{{ checksum "package.json" }}
           - v1-dependencies-
 
+      - run: sudo npm install --global --unsafe-perm now
       - run: now -t ${NOW_TOKEN}
       - run: now -t ${NOW_TOKEN} alias ${PROD_ALIAS}
     
