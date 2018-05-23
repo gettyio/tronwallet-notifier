@@ -41,10 +41,8 @@ jobs:
           - v1-dependencies-{{ checksum "package.json" }}
           - v1-dependencies-
 
-      - run: ls -la
-      - run: echo $NOW_TOKEN
-      - run: echo $DEV_ALIAS
-      - run: echo $PROD_ALIAS
+      - run: now -t ${NOW_TOKEN}
+      - run: now -t ${NOW_TOKEN} alias ${DEV_ALIAS}
 
   deploy-prod:
     docker:
@@ -59,10 +57,8 @@ jobs:
           - v1-dependencies-{{ checksum "package.json" }}
           - v1-dependencies-
 
-      - run: ls -la
-      - run: echo $NOW_TOKEN
-      - run: echo $DEV_ALIAS
-      - run: echo $PROD_ALIAS
+      - run: now -t ${NOW_TOKEN}
+      - run: now -t ${NOW_TOKEN} alias ${PROD_ALIAS}
     
 
 workflows:
