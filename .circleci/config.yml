@@ -42,7 +42,7 @@ jobs:
           - v1-dependencies-
 
       - run: sudo npm install --global --unsafe-perm now
-      - run: now -t ${NOW_TOKEN} -n ${DEV_NAME} --T ${TEAM}
+      - run: now -t ${NOW_TOKEN} -n ${DEV_NAME} --team getty-io
       - run: now -t ${NOW_TOKEN} alias ${DEV_ALIAS}
 
   deploy-prod:
