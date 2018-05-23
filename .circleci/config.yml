@@ -42,7 +42,7 @@ jobs:
           - v1-dependencies-
 
       - run: sudo npm install --global --unsafe-perm now
-      - run: now -t ${NOW_TOKEN}
+      - run: now -t ${NOW_TOKEN} --team ${TEAM}
       - run: now -t ${NOW_TOKEN} alias ${DEV_ALIAS}
 
   deploy-prod:
@@ -59,7 +59,7 @@ jobs:
           - v1-dependencies-
 
       - run: sudo npm install --global --unsafe-perm now
-      - run: now -t ${NOW_TOKEN}
+      - run: now -t ${NOW_TOKEN} --team ${TEAM}
       - run: now -t ${NOW_TOKEN} alias ${PROD_ALIAS}
     
 
