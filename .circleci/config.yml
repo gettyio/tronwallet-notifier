@@ -42,8 +42,8 @@ jobs:
           - v1-dependencies-
 
       - run: sudo npm install --global --unsafe-perm now
-      - run: now -t ${NOW_TOKEN} -n ${DEV_NAME} --team getty-io
-      - run: now -t ${NOW_TOKEN} alias ${DEV_ALIAS}
+      - run: now -t ${NOW_TOKEN} -n ${DEV_NAME} --team ${TEAM}
+      - run: now -t ${NOW_TOKEN} --team ${TEAM} alias ${DEV_ALIAS}
 
   deploy-prod:
     docker:
@@ -59,8 +59,8 @@ jobs:
           - v1-dependencies-
 
       - run: sudo npm install --global --unsafe-perm now
-      - run: now -t ${NOW_TOKEN} -n ${PROD_NAME} --T ${TEAM}
-      - run: now -t ${NOW_TOKEN} alias ${PROD_ALIAS}
+      - run: now -t ${NOW_TOKEN} -n ${PROD_NAME} --team ${TEAM}
+      - run: now -t ${NOW_TOKEN} --team ${TEAM} alias ${PROD_ALIAS}
     
 
 workflows:
