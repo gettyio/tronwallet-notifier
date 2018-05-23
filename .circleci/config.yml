@@ -32,11 +32,11 @@ jobs:
     docker:
       - image: circleci/node:7.10
     
-      working_directory: ~/repo
+    working_directory: ~/repo
 
-      steps:
-        - checkout
-        - restore_cache:
+    steps:
+      - checkout
+      - restore_cache:
           keys:
           - v1-dependencies-{{ checksum "package.json" }}
           - v1-dependencies-
@@ -46,15 +46,15 @@ jobs:
       - run: echo $DEV_ALIAS
       - run: echo $PROD_ALIAS
 
-  deploy-dev:
+  deploy-prod:
     docker:
       - image: circleci/node:7.10
     
-      working_directory: ~/repo
+    working_directory: ~/repo
 
-      steps:
-        - checkout
-        - restore_cache:
+    steps:
+      - checkout
+      - restore_cache:
           keys:
           - v1-dependencies-{{ checksum "package.json" }}
           - v1-dependencies-
@@ -77,8 +77,8 @@ workflows:
             branches:
               only: dev
       - deploy-prod:
-        requires:
-          - test
-        filters:
-          branches:
-            only: master
+          requires:
+            - test
+          filters:
+            branches:
+              only: master
