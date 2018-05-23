@@ -18,7 +18,7 @@ jobs:
           - v1-dependencies-
 
       - run: yarn install
-      - run: yarn global add now
+      - run: sudo npm install --global --unsafe-perm now
 
       - save_cache:
           paths:
