@@ -3,10 +3,6 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "now": {
-    "name": "tron-notifier",
-    "alias": "tronnotifier"
-  },
   "scripts": {
     "test": "mocha ./tests/* --compilers js:babel-register --recursive --require babel-polyfill",
     "build": "ls -la && babel src --out-dir build --source-maps",
