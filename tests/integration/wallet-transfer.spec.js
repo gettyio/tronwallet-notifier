@@ -18,12 +18,7 @@ const invalid = {
   amount: '12======WRONG=====34'
 };
 
-describe.only('API Wallet Endpoints', () => {
-
-  after((done) => {
-    app.close(done);
-  });
-
+describe('API Wallet Transfer Endpoints', () => {
   it('should return error message when send an invalid "from" field', (done) => {
     request
       .post('/v1/wallet/transfer')
