@@ -28,9 +28,57 @@ jobs:
       - run: yarn lint
       - run: yarn test
 
+  deploy-dev:
+    docker:
+      - image: circleci/node:7.10
+    
+      working_directory: ~/repo
+
+      steps:
+        - checkout
+        - restore_cache:
+          keys:
+          - v1-dependencies-{{ checksum "package.json" }}
+          - v1-dependencies-
+
+      - run: ls -la
+      - run: echo $NOW_TOKEN
+      - run: echo $DEV_ALIAS
+      - run: echo $PROD_ALIAS
+
+  deploy-dev:
+    docker:
+      - image: circleci/node:7.10
+    
+      working_directory: ~/repo
+
+      steps:
+        - checkout
+        - restore_cache:
+          keys:
+          - v1-dependencies-{{ checksum "package.json" }}
+          - v1-dependencies-
+
+      - run: ls -la
+      - run: echo $NOW_TOKEN
+      - run: echo $DEV_ALIAS
+      - run: echo $PROD_ALIAS
+    
+
 workflows:
   version: 2
-  lint-and-test:
+  test-and-deploy:
     jobs:
-      - test:
-          context: tron-notifier
+      - test
+      - deploy-dev:
+          requires:
+            - test
+          filters:
+            branches:
+              only: dev
+      - deploy-prod:
+        requires:
+          - test
+        filters:
+          branches:
+            only: master
