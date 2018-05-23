@@ -9,3 +9,10 @@ export const transfer = {
     amount: Joi.number().integer().required(),
   }
 };
+
+export const vote = {
+  body: {
+    from: Types.transfer().from().required(),
+    votes: Types.vote().default().required()
+  }
+};

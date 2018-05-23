@@ -42,7 +42,6 @@ app.use(syntaxHandler);
 
 // Router Handler (404)
 app.use((req, res) => {
-  console.log(req, res);
   res.status(404).json(constants.NOT_FOUND_MESSAGE);
 });
 

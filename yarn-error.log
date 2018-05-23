@@ -1,5 +1,5 @@
 Arguments: 
-  /Users/marlongomes/.nvm/versions/node/v8.11.1/bin/node /usr/local/Cellar/yarn/1.5.1_1/libexec/bin/yarn.js run lint
+  /Users/marlongomes/.nvm/versions/node/v8.11.1/bin/node /usr/local/Cellar/yarn/1.5.1_1/libexec/bin/yarn.js test
 
 PATH: 
   /Users/marlongomes/.nvm/versions/node/v8.11.1/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Users/marlongomes/Library/Android/sdk/tools:/Users/marlongomes/Library/Android/sdk/platform-tools:/Users/marlongomes/Library/Android/sdk/tools:/Users/marlongomes/Library/Android/sdk/platform-tools
@@ -5154,9 +5154,9 @@ Lockfile:
 
 Trace: 
   Error: Command failed.
-  Exit code: 1
+  Exit code: 3
   Command: sh
-  Arguments: -c eslint src
+  Arguments: -c mocha ./tests/* --compilers js:babel-register --recursive --require babel-polyfill
   Directory: /Users/marlongomes/Workspace/tron-notifier
   Output:
   
