@@ -1,5 +1,5 @@
 import { Joi } from 'celebrate';
-import { TransferContract } from '../../sdks/wallet-api-v2/protocol/core/Contract_pb';
+import { TransferContract, ParticipateAssetIssueContract } from '../../sdks/wallet-api-v2/protocol/core/Contract_pb';
 import { buildVote } from '../../sdks/wallet-api-v2/utils/transactionBuilder';
 import { decode58Check } from '../../sdks/wallet-api-v2/utils/crypto';
 
@@ -53,6 +53,29 @@ export default Joi
             return value;
           } catch (e) {
             return this.createError('vote.default', {}, state, options);
+          }
+        }
+      }
+    ]
+  }))
+  .extend(joi => ({
+    base: joi.string(),
+    name: 'participate',
+    language: {
+      issuer: 'Issuer address is invalid'
+    },
+    rules: [
+      {
+        name: 'issuer',
+        validate(params, value, state, options) {
+          try {
+            const participateContract = new ParticipateAssetIssueContract();
+            participateContract
+              .setToAddress(Uint8Array.from(decode58Check(value)));
+
+            return value;
+          } catch (e) {
+            return this.createError('participate.issuer', {}, state, options);
           }
         }
       }
