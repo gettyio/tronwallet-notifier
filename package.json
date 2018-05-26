@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "mocha ./tests/* --compilers js:babel-register --recursive --require babel-polyfill",
+    "test": "mocha ./tests/* --compilers js:babel-register --recursive --require babel-polyfill --timeout 30000",
     "build": "ls -la && babel src --out-dir build --source-maps",
     "start": "ls -la ./build && node ./build/app.js",
     "clean": "rm -rf build && rm -rf tmp",

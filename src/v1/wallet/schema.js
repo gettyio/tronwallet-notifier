@@ -16,3 +16,12 @@ export const vote = {
     votes: Types.vote().default().required()
   }
 };
+
+export const participate = {
+  body: {
+    from: Types.transfer().from().required(),
+    issuer: Types.participate().issuer().required(),
+    token: Joi.string().required(),
+    amount: Joi.number().integer().required()
+  }
+};
