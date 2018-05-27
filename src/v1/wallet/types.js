@@ -2,7 +2,6 @@ import { Joi } from 'celebrate';
 import { TransferContract, ParticipateAssetIssueContract } from '../../sdks/wallet-api-v2/protocol/core/Contract_pb';
 import { buildVote } from '../../sdks/wallet-api-v2/utils/transactionBuilder';
 import { decode58Check } from '../../sdks/wallet-api-v2/utils/crypto';
-import { participate } from './schema';
 
 export default Joi
   .extend(joi => ({

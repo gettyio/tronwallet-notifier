@@ -25,3 +25,22 @@ export const participate = {
     amount: Joi.number().integer().required()
   }
 };
+
+export const createToken = {
+  body: {
+    from: Types.transfer().from().required(),
+    form: Joi.object().keys({
+      freezeAmount: Joi.number().integer().required(),
+      freezeDays: Joi.number().integer().required(),
+      acceptTerms: Joi.boolean().required(),
+      name: Joi.string().required(),
+      description: Joi.string().required(),
+      totalSupply: Joi.number().integer().required(),
+      url: Joi.string().required(),
+      trxNum: Joi.number().required(),
+      num: Joi.number().required(),
+      startTime: Joi.string().required(),
+      endTime: Joi.string().required()
+    })
+  }
+};

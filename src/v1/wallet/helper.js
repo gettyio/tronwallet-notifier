@@ -3,7 +3,8 @@ import { byteArray2hexStr } from './../../sdks/wallet-api-v2/utils/bytes';
 import {
   buildTransferTransaction,
   buildVote,
-  buildAssetParticipate
+  buildAssetParticipate,
+  buildAssetIssue
 } from './../../sdks/wallet-api-v2/utils/transactionBuilder';
 
 export const ONE_TRX = 1000000;
@@ -29,5 +30,20 @@ export const vote = async ({ from, votes }) => {
 
 export const participate = async ({ from, issuer, token, amount }) => {
   const rawTransaction = buildAssetParticipate(from, issuer, token, amount * ONE_TRX);
+  return await serializeTransaction(rawTransaction);
+};
+
+export const createToken = async ({ form, from }) => {
+  const frozenSupply = form.freezeAmount > 0 ? [{
+    amount: form.freezeAmount,
+    days: form.freezeDays
+  }] : null;
+
+  const rawTransaction = buildAssetIssue({
+    ...form,
+    address: from,
+    frozenSupply
+  });
+
   return await serializeTransaction(rawTransaction);
 };
