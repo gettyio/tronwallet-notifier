@@ -10,7 +10,8 @@
     "clean": "rm -rf build && rm -rf tmp",
     "lint": "eslint src",
     "dev": "nodemon ./src/app.js --exec babel-node --presets es2015,stage-0",
-    "dev-consumer": "nodemon ./consumer.js --exec babel-node --presets es2015,stage-0"
+    "dev-consumer": "nodemon ./consumer.js --exec babel-node --presets es2015,stage-0",
+    "deploy-alias": "babel-node src/config/deployment.js"
   },
   "author": "Getty.IO <dev@getty.io> - Marlon",
   "license": "ISC",
@@ -21,6 +22,7 @@
     "body-parser": "^1.18.2",
     "celebrate": "5.0.1",
     "chai": "^4.1.2",
+    "clipboardy": "^1.2.3",
     "config": "^1.30.0",
     "cors": "^2.8.4",
     "express": "^4.16.3",
