@@ -42,10 +42,8 @@ jobs:
           - v1-dependencies-
 
       - run: sudo npm install --global --unsafe-perm now
-      - run: sudo apt install xsel
-      - run: now -t ${NOW_TOKEN} -n ${DEV_NAME} --team ${TEAM}
-      - run: yarn deploy-alias
-      - run: now -t ${NOW_TOKEN} --team ${TEAM} alias ${DEV_ALIAS}
+      - run: now -t ${NOW_TOKEN} -n ${DEV_NAME} --team ${TEAM} > DEPLOY_URL
+      - run: now -t ${NOW_TOKEN} --team ${TEAM} alias $(cat DEPLOY_URL) ${DEV_ALIAS}
 
   deploy-prod:
     docker:
