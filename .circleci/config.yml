@@ -59,8 +59,8 @@ jobs:
           - v1-dependencies-
 
       - run: sudo npm install --global --unsafe-perm now
-      - run: now -t ${NOW_TOKEN} -n ${PROD_NAME} --team ${TEAM}
-      - run: now -t ${NOW_TOKEN} --team ${TEAM} alias ${PROD_ALIAS}
+      - run: now -t ${NOW_TOKEN} -n ${PROD_NAME} --team ${TEAM} > DEPLOY_URL
+      - run: now -t ${NOW_TOKEN} --team ${TEAM} alias $(cat DEPLOY_URL) ${PROD_ALIAS}
     
 
 workflows:
