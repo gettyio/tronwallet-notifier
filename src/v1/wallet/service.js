@@ -1,6 +1,6 @@
 import { Router } from 'express';
 import celebrate from 'celebrate';
-import { transfer, vote, participate } from './schema';
+import { transfer, vote, participate, createToken } from './schema';
 import * as API from './helper';
 
 const router = new Router();
@@ -25,6 +25,15 @@ router.post('/vote', celebrate(vote), ({ body }, res) => {
 
 router.post('/participate', celebrate(participate), ({ body }, res) => {
   API.participate(body)
+    .then(data => res.status(200).json(data))
+    .catch(({ message }) => res.status(500).json({
+      error: { message, status: 500 },
+      body
+    }));
+});
+
+router.post('/create-token', celebrate(createToken), ({ body }, res) => {
+  API.createToken(body)
     .then(data => res.status(200).json(data))
     .catch(({ message }) => res.status(500).json({
       error: { message, status: 500 },
