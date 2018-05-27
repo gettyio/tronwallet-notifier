@@ -43,6 +43,7 @@ jobs:
 
       - run: sudo npm install --global --unsafe-perm now
       - run: now -t ${NOW_TOKEN} -n ${DEV_NAME} --team ${TEAM}
+      - run: yarn deploy-alias
       - run: now -t ${NOW_TOKEN} --team ${TEAM} alias ${DEV_ALIAS}
 
   deploy-prod:
