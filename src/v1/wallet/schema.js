@@ -44,3 +44,17 @@ export const createToken = {
     })
   }
 };
+
+export const freeze = {
+  body: {
+    from: Types.transfer().from().required(),
+    amount: Types.number().integer().required(),
+    duration: Types.string().required()
+  }
+};
+
+export const unfreeze = {
+  body: {
+    from: Types.transfer().from().required()
+  }
+};
