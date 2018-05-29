@@ -4,7 +4,9 @@ import {
   buildTransferTransaction,
   buildVote,
   buildAssetParticipate,
-  buildAssetIssue
+  buildAssetIssue,
+  buildFreezeBalance,
+  buildUnfreezeBalance
 } from './../../sdks/wallet-api-v2/utils/transactionBuilder';
 
 export const ONE_TRX = 1000000;
@@ -45,5 +47,15 @@ export const createToken = async ({ form, from }) => {
     frozenSupply
   });
 
+  return await serializeTransaction(rawTransaction);
+};
+
+export const freeze = async ({ from, amount, duration }) => {
+  const rawTransaction = buildFreezeBalance(from, amount, duration);
+  return await serializeTransaction(rawTransaction);
+};
+
+export const unfreeze = async ({ from }) => {
+  const rawTransaction = buildUnfreezeBalance(from);
   return await serializeTransaction(rawTransaction);
 };
