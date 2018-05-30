@@ -51,7 +51,7 @@ export const createToken = async ({ form, from }) => {
 };
 
 export const freeze = async ({ from, amount, duration }) => {
-  const rawTransaction = buildFreezeBalance(from, amount, duration);
+  const rawTransaction = buildFreezeBalance(from, amount * ONE_TRX, duration);
   return await serializeTransaction(rawTransaction);
 };
 
